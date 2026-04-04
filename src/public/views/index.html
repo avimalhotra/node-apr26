@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>{{title}}</title>
+     <link rel="stylesheet" href="/css/bootstrap.min.css">
+     <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+     {% include "header.html" %}
+     <main class="my-3">
+          <div class="container">
+               <h1>Welcome to {{title}}</h1>
+               <p>Tech Altum is in IT Training Institute in noida founded in 2012. Since {{age}} years, we are teching </p>
+          </div>
+     </main>
+     {% include "footer.html" %}
+     <div class="container">
+     </div>
+<script src="/js/bootstrap.bundle.min.js"></script>     
+<script>
+     console.log( new Date().toLocaleString() );
+     
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "apr26",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env src/app",
+    "dev": "node --env-file=.env --watch  src/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "chokidar": "^3.6.0",
+    "express": "^5.2.1",
+    "nunjucks": "^3.2.4"
+  }
+}
