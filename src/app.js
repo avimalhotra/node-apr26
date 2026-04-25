@@ -44,7 +44,6 @@ app.get("/",(req,res)=>{
           console.warn(e);
      });
 
-     
 });
 
 app.get("/about",(req,res)=>{
