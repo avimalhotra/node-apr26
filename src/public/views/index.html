@@ -11,13 +11,56 @@
      {% include "header.html" %}
      <main class="my-3">
           <div class="container">
-               <h1>Welcome to {{title}}</h1>
-               <p>Tech Altum is in IT Training Institute in noida founded in 2012. Since {{age}} years, we are teching </p>
+               <h1>Welcome to {{title | title}}</h1>
+               <p>Tech Altum is in IT Training Institute in noida founded in 2012. Since {{age}} years, we are teaching</p>
+               <p>Visit <a href="https://www.{{title | replace(' ','-')}}.com">{{title}}</a> </p>
+               <p>Next year, we will be celebrating our {{age+1}} anniversary</p>
+               {% if city %}
+               <p>City: {{ city }}</p>
+               {% else %}
+               <p>No city found</p>
+                {% endif %}
+               <hr>
+               <h2>Array</h2>
+               <ol>
+                    {% for i in cars %}
+                         <li>{{ i.name | title }}</li>
+                    {% endfor %}
+               </ol>
+               <hr>
+               <h2>Object</h2>
+               <table class="table table-bordered">
+                    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+                    <tbody>
+                    {% for i,j in car %}
+                    <tr><td>{{i | title}}</td><td>{{j}}</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <h2>Add Data</h2>
+
+                <form action="/addcars" method="get">
+                    <div class="row align-items-center">
+                         <div class="col-auto"><label class="form-label" for="car">Name</label></div>
+                         <div class="col-auto"><input type="text" pattern="[\w]{3,15}" class="form-control" name="car" id="car" required></div>
+                         <div class="col-auto"><label class="form-label" for="type">Type</label></div>
+                         <div class="col-auto">
+                              <select class="form-select" name="type" id="type" required>
+                                   <option value="" selected disabled>--Choose Body Type--</option>
+                                   <option>hatchback</option>
+                                   <option>sedan</option>
+                                   <option>suv</option>
+                                   <option>mpv</option>
+                              </select>
+                         </div>
+                         <div class="col-auto"><label class="form-label" for="car">Price</label></div>
+                         <div class="col-auto"><input type="text" pattern="[\d]{6}" class="form-control" name="price" id="price" required></div>
+                         <div class="col-auto"><button class="btn btn-outline-primary">Add Car</button></div>
+                    </div>
+                </form>
           </div>
      </main>
      {% include "footer.html" %}
-     <div class="container">
-     </div>
 <script src="/js/bootstrap.bundle.min.js"></script>     
 <script>
      console.log( new Date().toLocaleString() );

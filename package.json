@@ -16,6 +16,7 @@
     "bootstrap": "^5.3.8",
     "chokidar": "^3.6.0",
     "express": "^5.2.1",
+    "mongoose": "^9.5.0",
     "nunjucks": "^3.2.4"
   }
 }
