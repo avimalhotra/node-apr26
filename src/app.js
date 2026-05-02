@@ -3,7 +3,7 @@ import path from 'path';
 import nunjucks from "nunjucks";
 
 /* db */
-import mongoose from './dao.js';
+import mongoose from './config/dao.js';
 import CarsSchema from './models/Suzuki.js';
 import AdminSchema from './models/Admin.js';
 const Cars=mongoose.model("Cars",CarsSchema);
@@ -22,6 +22,10 @@ app.use(express.urlencoded({ extended: true }));
 
 import Admin from './controllers/admin.js';
 
+/* APi Routes */
+import router from './routes/api.js';
+
+app.use("/api",router);
 
 // configure
 nunjucks.configure(path.resolve('src/public/views'),{
@@ -32,18 +36,13 @@ nunjucks.configure(path.resolve('src/public/views'),{
 }); 
 
 app.get("/",(req,res)=>{
-     Cars.find({}).select('name type price -_id').then(i=>{
-          res.status(200).render("index.html",{
+          res.status(200).render("index.njk",{
           title:"tech altum", 
           age: new Date().getFullYear()-2012, 
-          cars:i,
           car:{name:"swift",power:82,torque:112,price:800000},
           city:"noida"
-      });
-     }).catch(e=>{
-          console.warn(e);
      });
-
+     
 });
 
 app.get("/about",(req,res)=>{
@@ -54,7 +53,32 @@ app.get("/login",(req,res)=>{
      res.status(200).render("login.html",{title:"Login"});
 });
 
+app.get("/cars",(req,res)=>{
+      Cars.find({}).select('name type price -_id').then(i=>{
+          res.status(200).render("cars.njk",{title:"All Cars", cars:i});
+      }).catch(e=>{
+          console.warn(e);
+     })
+});
+
+app.get("/cars/:car",(req,res)=>{
+     const car=req.params.car.replaceAll("-"," ");
+
+      Cars.find({name:car}).select("-_id").then(i=>{
+          if(i.length){
+               res.status(200).render("car.njk",{title:car, car:i});
+          }
+          else{
+               res.status(200).render("car.njk",{title:"No Car Found"});
+          }
+      });
+     
+});
+
+
+
 app.get("/addcars",(req,res)=>{
+
      const {car,price,type}=req.query;
 
      const newCar=new Cars({

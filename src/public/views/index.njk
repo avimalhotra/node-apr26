@@ -13,30 +13,8 @@
           <div class="container">
                <h1>Welcome to {{title | title}}</h1>
                <p>Tech Altum is in IT Training Institute in noida founded in 2012. Since {{age}} years, we are teaching</p>
-               <p>Visit <a href="https://www.{{title | replace(' ','-')}}.com">{{title}}</a> </p>
-               <p>Next year, we will be celebrating our {{age+1}} anniversary</p>
-               {% if city %}
-               <p>City: {{ city }}</p>
-               {% else %}
-               <p>No city found</p>
-                {% endif %}
-               <hr>
-               <h2>Array</h2>
-               <ol>
-                    {% for i in cars %}
-                         <li>{{ i.name | title }}</li>
-                    {% endfor %}
-               </ol>
-               <hr>
-               <h2>Object</h2>
-               <table class="table table-bordered">
-                    <thead><tr><th>Property</th><th>Value</th></tr></thead>
-                    <tbody>
-                    {% for i,j in car %}
-                    <tr><td>{{i | title}}</td><td>{{j}}</td></tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+        
+              
                 <h2>Add Data</h2>
 
                 <form action="/addcars" method="get">
@@ -62,9 +40,5 @@
      </main>
      {% include "footer.html" %}
 <script src="/js/bootstrap.bundle.min.js"></script>     
-<script>
-     console.log( new Date().toLocaleString() );
-     
-</script>
 </body>
 </html>
