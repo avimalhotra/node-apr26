@@ -11,15 +11,8 @@
      {% include "header.html" %}
      <main class="my-3">
           <div class="container">
-               <h1>Login Page</h1>
-               <form action="/login" method="post">
-                    <label>Username: <input type="text" name="username" required></label>
-                    <label>Password: <input type="password" name="password" required></label>
-                    <button>Login</button>
-               </form>
-               <p>{{error}}</p>
-               <p>{{errorMessage}}</p>
-               <p>{{message}}</p>
+               <h1>Hello {{name}}</h1>
+               <form action="/logout"><button class="btn btn-danger">Logout</button></form>
           </div>
      </main>
      {% include "footer.html" %}

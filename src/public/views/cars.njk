@@ -20,11 +20,21 @@
                     </ol>
                </nav>
                <h2>Cars Available</h2>
-               <ol>
+               <div class="row g-3">
                     {% for i in cars %}
-                         <li><a href={{"cars/"+(i.name).replaceAll(" ","-") }}>{{ i.name | title }}</a></li>
+                         <div class="col-lg-3 col-sm-6">
+                              <div class="card">
+                                   <div class="card-body">
+                                       
+                                             <h3>{{ i.name | title }}</h3>
+                                             <p>Body Type: {{ i.type | title }}</p>
+                                             <p>Price: ₹{{ i.price }}</p>
+                                             <a href={{"cars/"+(i.name).replaceAll(" ","-") }}>{{i.name | title}}</a>
+                                   </div>
+                              </div>
+                         </div>
                     {% endfor %}
-               </ol>
+               </div>
                <hr>
           </div>
      </main>
