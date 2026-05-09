@@ -10,9 +10,20 @@ import AdminSchema from './models/Admin.js';
 const Cars=mongoose.model("Cars",CarsSchema);
 const Admins=mongoose.model("Admins",AdminSchema);
 
+import helmet from 'helmet';
+import cors from 'cors';
+
 
 const app = express();
 const port=process.env.PORT || 3000;
+
+app.use(helmet());
+app.use(cors({
+  // origin: "http://127.0.0.1:8080"
+  origin: "*"
+}));
+
+
 
 app.use(express.static(path.resolve("src/public")));
 app.use(express.static(path.resolve("node_modules/bootstrap/dist")));

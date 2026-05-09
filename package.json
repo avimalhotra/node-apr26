@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node --env-file=.env src/app",
     "dev": "node --env-file=.env --watch  src/app",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -15,11 +15,18 @@
   "dependencies": {
     "bootstrap": "^5.3.8",
     "chokidar": "^3.6.0",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.5.1",
     "express-session": "^1.19.0",
+    "helmet": "^8.1.0",
     "mongoose": "^9.5.0",
     "nunjucks": "^3.2.4",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^11.3.0",
+    "supertest": "^7.2.2"
   }
 }
