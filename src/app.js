@@ -102,7 +102,7 @@ nunjucks.configure(path.resolve('src/public/views'),{
 
 
 app.get("/",(req,res)=>{
-          res.status(200).render("index.njk",{
+          res.status(200).render("index.html",{
           title:"tech altum", 
           age: new Date().getFullYear()-2012, 
           car:{name:"swift",power:82,torque:112,price:800000},
